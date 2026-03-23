@@ -47,9 +47,9 @@ http://localhost:3000
 
 #### Use these demo credentials for the sign-in prototype:
 
-alex@campuscycle.test / admin
-sarah@campuscycle.test / admin
-marcus@campuscycle.test / admin
+- alex@campuscycle.test / admin
+- sarah@campuscycle.test / admin
+- marcus@campuscycle.test / admin
 
 #### Database
 - The application uses a seeded MySQL database. The schema includes:
