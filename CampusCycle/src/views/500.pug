@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  section.page-section
+    .container
+      .empty-state
+        h1 Something went wrong
+        p= message || 'An unexpected error occurred.'
+        a.button.button-primary(href='/') Return Home

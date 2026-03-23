@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  section.hero-section
+    .container.hero-grid
+      .hero-copy
+        h1 Share, Exchange, #[span.text-accent Cycle.]
+        p.hero-copy__lead Connecting students for sustainable resource sharing on campus. Save money, reduce waste, and build a stronger community.
+        form.hero-search(action='/items', method='get')
+          input(type='text', name='q', placeholder='Search for textbooks, tools, or lab equipment...')
+          button.button.button-primary(type='submit') Search
+        .chip-row
+          each category in categories
+            a.filter-chip(href=`/tags/${category.id}/items`)= category.name
+        .hero-stats
+          .stat-card
+            strong= stats.listings_count
+            span Active Listings
+          .stat-card
+            strong= stats.users_count
+            span Community Members
+          .stat-card
+            strong= stats.tags_count
+            span Categories
+      .hero-panel
+        .hero-panel__header
+          h3 Better for your wallet, better for the planet.
+          p Did you know the average student spends heavily on books and supplies yearly? Cycle your resources and keep the campus community thriving.
+        .hero-panel__members
+          each member in recentUsers
+            .mini-member
+              img.profile-photo(src=member.avatar_url || '/placeholders/profile-placeholder.png', alt=member.name)
+              .mini-member__copy
+                strong= member.name
+                span= member.major
+        a.button.button-soft(href='/signup') Start Listing Today
+  section.page-section
+    .container.listings-layout
+      aside.filters-sidebar
+        h4 Resource Type
+        .filter-list
+          a.sidebar-filter(href='/items?exchange_type=Gift') Gift Free
+          a.sidebar-filter(href='/items?exchange_type=Loan') Loan Borrow
+          a.sidebar-filter(href='/items?exchange_type=Swap') Swap Exchange
+        h4 Condition
+        .filter-list
+          a.sidebar-filter(href='/items?condition=Like%20New') Like New
+          a.sidebar-filter(href='/items?condition=Good') Good
+          a.sidebar-filter(href='/items?condition=Used') Used
+        .trending-box
+          h5 Trending Tags
+          .tag-chip-row
+            each hashTag in popularHashTags
+              a.tag-chip(href=`/items?q=${hashTag}`) ##{hashTag}
+      .listings-column
+        .section-heading.row-between
+          div
+            h2 Active Listings
+            p.section-subtitle Rendered from MySQL and aligned to the browse listing prototype.
+          a.text-link(href='/items') View all
+        .listing-grid.three-col
+          each item in featuredItems
+            +listingCard(item)
+  section.cta-band
+    .container.cta-band__inner
+      .cta-band__copy
+        h2 Join the CampusCycle community
+        p Create an account, upload item photos, and let other students discover useful resources without buying new.
+      .cta-band__actions
+        a.button.button-primary(href='/signup') Create Account
+        a.button.button-outline(href='/items/new') Post a Listing

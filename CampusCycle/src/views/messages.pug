@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  section.page-hero.page-hero--compact
+    .container
+      h1 Messages
+      p Sprint 3 demo inbox for community conversations.
+  section.page-section
+    .container.messages-layout
+      .surface-card.conversation-list
+        each contact in contacts
+          article.conversation-row
+            img.profile-photo(src=contact.avatar_url, alt=contact.name)
+            .conversation-row__copy
+              strong= contact.name
+              span= contact.badge_label
+              p= contact.preview
+      .surface-card.message-panel
+        h2 Start a conversation
+        p Choose a member from the left to continue coordinating pickup, return dates, or swaps. This page is a UI prototype ready for Sprint 4 messaging logic.
+        a.button.button-primary(href='/items') Browse items to message about

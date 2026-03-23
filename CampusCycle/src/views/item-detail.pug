@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  section.page-section
+    .container
+      .breadcrumbs
+        a(href='/') Home
+        span ›
+        a(href='/items') Listings
+        span ›
+        a(href=`/tags/${item.primary_tag_id}/items`)= item.primary_tag_name
+        span ›
+        span= item.title
+      .detail-layout
+        .detail-gallery
+          .detail-gallery__main
+            img#mainDetailImage(src=item.cover_image_url || '/placeholders/item-placeholder.png', alt=item.title)
+          if item.gallery_images.length
+            .detail-gallery__thumbs
+              each galleryImage, index in item.gallery_images
+                button.detail-thumb(type='button', data-gallery-thumb, data-image=galleryImage, class=index === 0 ? 'is-active' : '')
+                  img(src=galleryImage, alt=`${item.title} image ${index + 1}`)
+        .detail-info
+          .detail-label-row
+            span.category-pill= item.primary_tag_name.toUpperCase()
+            span.condition-pill= item.condition_label
+          h1= item.title
+          .detail-submeta
+            span= item.created_label
+            if owner && owner.verified
+              span Verified Listing
+          .owner-spotlight
+            a.owner-spotlight__main(href=`/users/${owner.id}`)
+              img.profile-photo(src=owner.avatar_url || '/placeholders/profile-placeholder.png', alt=owner.name)
+              .owner-spotlight__copy
+                strong= owner.name
+                span #{owner.response_rate}% response rate
+            a.button.button-outline(href=`/users/${owner.id}`) View Profile
+          h3 Description
+          p.detail-description= item.description
+          .tag-chip-row
+            each tag in item.tag_list
+              a.tag-chip(href=`/tags/${tag.id}/items`) ##{tag.name.replace(/\s+/g, '')}
+          .detail-actions
+            a.button.button-secondary(href='/messages') Request Item
+            if currentUser
+              a.button.button-outline(href='/messages') Contact Owner
+            else
+              a.button.button-outline(href='/signin') Sign in to contact
+          p.detail-helper Response time: #{item.response_note}
+      if relatedItems.length
+        .section-heading.row-between
+          div
+            h2 Related Listings
+            p.section-subtitle Same category and similar needs.
+          a.text-link(href=`/tags/${item.primary_tag_id}/items`) See all #{item.primary_tag_name.toLowerCase()}
+        .listing-grid.four-col
+          each related in relatedItems
+            +listingCard(related, true)
