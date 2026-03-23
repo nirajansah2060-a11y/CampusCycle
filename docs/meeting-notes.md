@@ -153,9 +153,3 @@ The team agreed that the final repository should demonstrate both technical func
 The team confirmed that the CampusCycle Sprint 3 implementation is suitable for demonstration and repository submission, subject to the final replacement of selected placeholder images and final PDF evidence preparation.
 
 ---
-
-## Notes
-
-- Replace all bracketed date and time fields with your actual meeting details.
-- Add lecturer, tutorial, or module references if your tutor expects them.
-- If you had more meetings, continue this same format.
