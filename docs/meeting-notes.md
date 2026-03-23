@@ -6,8 +6,6 @@ This document records the team meetings held during the development of the Campu
 
 ## Meeting 1 - Sprint 3 Planning and Scope Confirmation
 
-**Date:** [Add actual date]  
-**Time:** [Add actual time]  
 **Mode:** Online / In person  
 **Attendees:** Nirajan Sah, Aashish Gupta, Pradip Oli
 
@@ -45,8 +43,6 @@ The team discussed the current state of the repository and recognised the need t
 
 ## Meeting 2 - UI Review and Figma Alignment
 
-**Date:** [Add actual date]  
-**Time:** [Add actual time]  
 **Mode:** Online / In person  
 **Attendees:** Nirajan Sah, Aashish Gupta, Pradip Oli
 
@@ -86,8 +82,6 @@ The group discussed how item and user profile images would be added. It was agre
 
 ## Meeting 3 - Integration, Testing, and Submission Preparation
 
-**Date:** [Add actual date]  
-**Time:** [Add actual time]  
 **Mode:** Online / In person  
 **Attendees:** Nirajan Sah, Aashish Gupta, Pradip Oli
 
@@ -127,8 +121,6 @@ The team also reviewed repository readiness for submission evidence, including s
 
 ## Meeting 4 - Final Review Before Submission
 
-**Date:** [Add actual date]  
-**Time:** [Add actual time]  
 **Mode:** Online / In person  
 **Attendees:** Nirajan Sah, Aashish Gupta, Pradip Oli
 
