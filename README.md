@@ -60,3 +60,58 @@ http://localhost:3000
 
 #### The database is initialised from:
 - db/schema.sql
+
+---
+
+## Team Members
+Replace this section with your final team details if needed.
+
+- Nirajan Sah - Project coordination, integration, repository management
+- Aashish Gupta - Backend and route logic
+- Pradip Oli - Frontend templates and styling
+
+---
+
+### Sprint 3 Deliverables Covered
+This repository supports the following Sprint 3 submission evidence:
+
+- implemented user stories
+- working database-driven MVP
+- Docker environment
+- MySQL schema
+- GitHub repository activity
+- Kanban/project tracking
+- meeting records
+- design implementation aligned with the Figma prototype
+  
+#### Current Limitations
+This version is a Sprint 3 prototype and not a full production platform. The following are prototype-level features:
+
+- sign in and account creation are demo implementations
+- messaging is UI-level and not real-time
+- image upload is simplified for academic demonstration
+- advanced moderation and campus verification are not fully implemented
+
+#### Future Improvements
+
+- full authentication and authorisation
+- real-time messaging
+- image upload persistence
+- campus email verification
+- save or favourite listings
+- exchange history
+- moderation dashboard
+- better accessibility testing
+- responsive refinements for smaller devices
+
+---
+  
+### Repository
+```bash
+https://github.com/nirajansah2060-a11y/CampusCycle
+```
+
+---
+
+## License
+This project is developed for academic submission purposes.
