@@ -34,7 +34,7 @@ This implementation covers the main Sprint 3 requirements:
 
 
 ## Setup Instructions
-- Option 1: Run with Docker
+- Run with Docker
 
 ```bash
 docker compose down -v
@@ -52,7 +52,8 @@ http://localhost:3000
 - marcus@campuscycle.test / admin
 
 #### Database
-- The application uses a seeded MySQL database. The schema includes:
+The application uses a seeded MySQL database. The schema includes:
+
 -- users
 -- listings
 -- tags
