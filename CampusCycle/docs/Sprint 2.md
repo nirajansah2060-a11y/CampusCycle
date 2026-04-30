@@ -1,7 +1,6 @@
-```markdown
 # CampusCycle - Sprint 2 README
 
-CampusCycle is a database-driven campus resource sharing platform designed for students to share, borrow, swap, gift and discover useful academic and everyday items on campus. The project follows the module theme **Sharing, Exchange and Building Community**.
+CampusCycle is a database-driven campus resource-sharing platform designed for students to share, borrow, swap, gift, and discover useful academic and everyday items on campus. The project follows the module theme **Sharing, Exchange and Building Community**.
 
 Sprint 2 focused on turning the Sprint 1 idea into a clearer software plan. This included refining requirements, improving user stories, planning the database design, preparing page designs and organising the development tasks for Sprint 3.
 
