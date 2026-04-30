@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  section.signup-page
+    .container.signup-layout
+      .signup-copy
+        h1 Empower your campus #[span.text-accent community.]
+        p Join thousands of students who are sharing textbooks, bikes, and gear. Save money and live sustainably.
+        .benefit-card
+          .benefit-card__icon ✓
+          .benefit-card__copy
+            h3 Verified Students
+            p Only edu emails allowed for a safe space.
+        .benefit-card
+          .benefit-card__icon ⟳
+          .benefit-card__copy
+            h3 Sustainable Cycle
+            p Reduce waste by reusing campus resources.
+        .signup-illustration
+          img(src='/placeholders/students-illustration.png', alt='CampusCycle student illustration')
+      .form-panel
+        h2 Join CampusCycle
+        p Start sharing your resources today.
+        form.form-stack(action='/signup', method='post')
+          label.field-label(for='name') Full Name
+          input.input(type='text', id='name', name='name', placeholder='John Doe', required)
+          label.field-label(for='email') Student Email
+          input.input(type='email', id='email', name='email', placeholder='email@university.edu', required)
+          .two-col-fields
+            .field-col
+              label.field-label(for='password') Password
+              input.input(type='password', id='password', name='password', placeholder='Create password', required)
+            .field-col
+              label.field-label(for='confirm_password') Confirm Password
+              input.input(type='password', id='confirm_password', name='confirm_password', placeholder='Repeat password', required)
+          label.checkbox-row
+            input(type='checkbox', required)
+            span I agree to the Terms of Service and Privacy Policy.
+          button.button.button-primary.button-block(type='submit') Create Account
+          p.helper-text Already have an account? #[a.text-link(href='/signin') Sign In]

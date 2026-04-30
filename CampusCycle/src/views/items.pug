@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  section.page-hero.page-hero--compact
+    .container
+      h1 Browse Listings
+      p Browse by keyword, category, exchange type, or condition.
+  section.page-section
+    .container.listings-layout
+      aside.filters-sidebar
+        form.filters-form(action='/items', method='get')
+          label.field-label(for='q') Search resources
+          input.input(type='text', id='q', name='q', value=filters.q, placeholder='Search textbooks, bikes, notes...')
+          label.field-label(for='tag') Category
+          select.select(id='tag', name='tag')
+            option(value='') All categories
+            each category in categories
+              option(value=category.id, selected=filters.tag === category.id)= category.name
+          label.field-label(for='exchange_type') Resource type
+          select.select(id='exchange_type', name='exchange_type')
+            option(value='') Any type
+            option(value='Gift', selected=filters.exchangeType === 'Gift') Gift
+            option(value='Loan', selected=filters.exchangeType === 'Loan') Loan
+            option(value='Swap', selected=filters.exchangeType === 'Swap') Swap
+          label.field-label(for='condition') Condition
+          select.select(id='condition', name='condition')
+            option(value='') Any condition
+            option(value='Like New', selected=filters.condition === 'Like New') Like New
+            option(value='Very Good', selected=filters.condition === 'Very Good') Very Good
+            option(value='Good', selected=filters.condition === 'Good') Good
+            option(value='Used', selected=filters.condition === 'Used') Used
+            option(value='Excellent', selected=filters.condition === 'Excellent') Excellent
+            option(value='Digital Print', selected=filters.condition === 'Digital Print') Digital Print
+          label.field-label(for='sort') Sort by
+          select.select(id='sort', name='sort')
+            option(value='newest', selected=filters.sort === 'newest') Newest First
+            option(value='price', selected=filters.sort === 'price') Highest Price
+          .button-row
+            button.button.button-primary(type='submit') Apply Filters
+            a.button.button-outline(href='/items') Reset
+        .trending-box
+          h5 Popular Tags
+          .tag-chip-row
+            each hashTag in popularHashTags
+              a.tag-chip(href=`/items?q=${hashTag}`) ##{hashTag}
+      .listings-column
+        .section-heading.row-between
+          div
+            h2 Active Listings
+            p.section-subtitle #{items.length} result#{items.length === 1 ? '' : 's'} found
+          if currentUser
+            a.button.button-outline(href='/items/new') Create Listing
+        if items.length
+          .listing-grid.three-col
+            each item in items
+              +listingCard(item)
+        else
+          .empty-state
+            h3 No listings matched your filters
+            p Clear one or more filters to see the full catalog.
+            a.button.button-primary(href='/items') Show all listings

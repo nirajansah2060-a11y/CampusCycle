@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  section.page-hero.page-hero--compact
+    .container
+      h1 Categories and Tags
+      p Browse by what you need. From textbooks to dorm essentials, we have got the campus covered.
+  section.page-section
+    .container
+      .category-grid
+        each category in categories
+          article.category-card(style=`--card-tint:${category.accent_color}`)
+            .category-card__icon= category.icon_label
+            .category-card__content
+              h3= category.name
+              p= category.description
+            a.category-card__link(href=`/tags/${category.id}/items`) →
+      .section-heading
+        h2 Popular Tags
+      .tag-chip-row.tag-chip-row--spacious
+        each hashTag in popularHashTags
+          a.tag-chip(href=`/items?q=${hashTag}`) ##{hashTag}
+      .section-heading.row-between
+        div
+          h2 Featured Listings
+          p.section-subtitle Add your own PNG images into the image folders to replace the placeholders.
+        a.text-link(href='/items') View all
+      .listing-grid.four-col
+        each item in featuredItems
+          +listingCard(item, true)

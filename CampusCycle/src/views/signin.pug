@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  section.auth-screen-modern
+    .auth-shell-modern
+      .auth-visual-modern
+        .auth-visual-modern__overlay
+          .auth-visual-modern__top
+            .auth-mini-brand
+              .auth-mini-brand__icon ∞
+              span.auth-mini-brand__text CampusCycle
+
+          .auth-visual-modern__content
+            span.auth-chip Campus sharing made simple
+            h1 Save money. Share resources. Build community.
+            p CampusCycle helps students lend, swap, gift and sell textbooks, tools, kitchenware and study essentials within their campus community.
+            
+            .auth-feature-list
+              .auth-feature-item
+                span.auth-feature-item__icon ✓
+                span Verified student community
+              .auth-feature-item
+                span.auth-feature-item__icon ✓
+                span Smarter matches and recommendations
+              .auth-feature-item
+                span.auth-feature-item__icon ✓
+                span Quick messaging for listings
+
+          .auth-visual-modern__bottom
+            h3 Join thousands of students saving money and reducing waste.
+            p Trade books, calculators, notes, household items and more — all in one student-friendly platform.
+
+      .auth-panel-modern
+        .auth-card-modern
+          .auth-card-modern__header
+            span.auth-eyebrow Welcome back
+            h4 Sign in to your account
+            p Enter your credentials to continue to CampusCycle.
+
+          form.auth-form-modern(action='/signin', method='post')
+            .auth-form-modern__group
+              label(for='email') Email
+              input#email(type='email', name='email', placeholder='name@university.edu', required)
+
+            .auth-form-modern__group
+              .auth-form-modern__label-row
+                label(for='password') Password
+                span.auth-demo-text Demo password: demo123
+              input#password(type='password', name='password', placeholder='Enter password', required)
+
+            button.button.button-primary.auth-submit-modern(type='submit') Sign In
+
+          .auth-divider-modern
+            span OR
+
+          .auth-secondary-actions
+            a.button.button-outline.auth-secondary-button(href='/signup') Create Account
+            a.auth-text-link(href='/') Back to Home

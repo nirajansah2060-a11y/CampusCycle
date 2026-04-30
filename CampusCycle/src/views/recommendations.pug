@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  section.page-hero.page-hero--compact
+    .container
+      h1 Recommended Matches
+      if hasPersonalHistory
+        p Sprint 4 advanced recommendations based on your previous listing categories and shared tags.
+      else
+        p Sprint 4 recommendations are using starter interests until you create your own listings.
+  section.page-section
+    .container
+      .surface-card.recommendation-explainer
+        h2 How the matching algorithm works
+        p The score uses category overlap, shared tags, ownership, exchange type and recency to prioritise useful resources. This demonstrates both basic matching and advanced recommendations for the Sprint 4 MVP.
+      if recommendations.length
+        .listing-grid.three-col
+          each item in recommendations
+            .match-card-wrapper
+              +listingCard(item)
+              .match-score
+                strong #{item.match_score}% match
+                span= item.match_reason
+      else
+        .empty-state
+          h3 No matches yet
+          p Add your first listing so CampusCycle can learn your interests.
+          a.button.button-primary(href='/items/new') Create listing

@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  section.page-hero.page-hero--compact
+    .container
+      h1 Messages
+      p Sprint 4 database-backed messaging for item requests, swaps and pickup coordination.
+  section.page-section
+    .container.messages-layout
+      .surface-card.conversation-list
+        h2 Inbox
+        p.helper-text Conversations are grouped by student and listing, so one item request stays in one chat.
+        if conversations.length
+          each conversation in conversations
+            a.conversation-row(href=`/messages?conversation=${conversation.key}`, class=selectedConversation && selectedConversation.key === conversation.key ? 'is-active' : '')
+              img.profile-photo(src=conversation.otherPerson.avatar_url, alt=conversation.otherPerson.name)
+              .conversation-row__copy
+                strong= conversation.otherPerson.name
+                span #{conversation.latest.direction} · #{conversation.latest.created_label}
+                if conversation.listing_title
+                  span.conversation-item= conversation.listing_title
+                p= conversation.latest.body
+        else
+          .empty-state
+            h3 No messages yet
+            p Browse listings and contact owners to start exchanging resources.
+      .surface-card.message-panel
+        if selectedConversation
+          .chat-header
+            img.profile-photo(src=selectedConversation.otherPerson.avatar_url, alt=selectedConversation.otherPerson.name)
+            div
+              h2 Chat with #{selectedConversation.otherPerson.name}
+              if selectedConversation.listing_title
+                a.text-link(href=`/items/${selectedConversation.listing_id}`) About: #{selectedConversation.listing_title}
+              else
+                p.helper-text General message
+          if selectedConversation.messages && selectedConversation.messages.length
+            .chat-thread
+              each message in selectedConversation.messages
+                .chat-bubble(class=message.isMine ? 'chat-bubble--mine' : 'chat-bubble--theirs')
+                  span.chat-bubble__meta #{message.direction} · #{message.created_label}
+                  p= message.body
+          else
+            .empty-state.empty-state--small
+              h3 Start this conversation
+              p Send the first message about this student or listing.
+        else
+          h2 Start a message
+          p Choose a recipient and optionally link the message to a listing.
+        form.form-stack.chat-compose(action='/messages', method='post')
+          label.field-label(for='receiver_id') Recipient
+          select.select(id='receiver_id', name='receiver_id', required)
+            option(value='') Select a student
+            each user in users
+              option(value=user.id, selected=Number(selectedReceiverId) === Number(user.id)) #{user.name} · #{user.badge_label || 'Member'}
+          label.field-label(for='listing_id') Related listing optional
+          select.select(id='listing_id', name='listing_id')
+            option(value='') No listing selected
+            each listing in listings
+              option(value=listing.id, selected=Number(selectedListingId) === Number(listing.id))= listing.title
+          label.field-label(for='body') Message
+          textarea.input.textarea(id='body', name='body', rows='4', placeholder='Hi, is this item still available? I can collect from campus this week.', required)
+          button.button.button-primary.button-block(type='submit') Send Message
+        a.button.button-outline.button-block(href='/items') Browse items to message about
