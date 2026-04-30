@@ -1,0 +1,61 @@
+mixin listingCard(item, compact)
+  article.listing-card(class=compact ? 'listing-card-compact' : '')
+    a.listing-card__image-wrap(href=`/items/${item.id}`)
+      img.listing-card__image(src=item.cover_image_url || '/placeholders/item-placeholder.png', alt=item.title)
+      span.exchange-pill(class=`exchange-${item.exchange_type.toLowerCase()}`)= item.exchange_type
+      if item.display_price
+        span.price-pill= item.display_price
+
+    .listing-card__body
+      .card-meta-top
+        span.card-kicker= item.primary_tag_name
+        span.card-time= item.created_label
+
+      h3
+        a(href=`/items/${item.id}`)= item.title
+
+      p.card-description= item.description
+
+      if item.tag_list && item.tag_list.length
+        .tag-chip-row
+          each tag in item.tag_list.slice(0, 3)
+            a.tag-chip(href=`/tags/${tag.id}/items`) ##{tag.name.replace(/\s+/g, '')}
+
+      .listing-card__footer
+        a.owner-inline(href=`/users/${item.owner_id}`)
+          img.avatar-image(src=item.owner_avatar_url || '/placeholders/profile-placeholder.png', alt=item.owner_name)
+          span= item.owner_name
+        a.button.button-soft.button-small.card-action(href=`/items/${item.id}`) View Details
+
+
+mixin memberCard(user)
+  article.member-card
+    .member-card__top
+      img.profile-photo(src=user.avatar_url || '/placeholders/profile-placeholder.png', alt=user.name)
+      if user.badge_label
+        span.badge-label= user.badge_label
+
+    h3
+      a(href=`/users/${user.id}`)= user.name
+
+    p.member-degree= user.department || user.major || 'Campus Member'
+
+    if user.bio
+      p.member-bio= user.bio
+    else
+      p.member-bio Active CampusCycle member sharing useful campus resources.
+
+    .member-stats
+      .member-stat
+        strong= user.listing_count || 0
+        span Listings
+
+      .member-stat
+        strong= user.points || 0
+        span Points
+
+      .member-stat.member-since
+        strong Member since
+        span= user.joined_label || 'Recently'
+
+    a.button.button-soft.button-block(href=`/users/${user.id}`) View Profile
