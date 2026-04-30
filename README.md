@@ -1,6 +1,6 @@
 # CampusCycle
 
-CampusCycle is a database-driven campus resource sharing platform designed for students to share, borrow, swap, gift, message, and discover useful academic and everyday items on campus. The application is built with **Express**, **Pug**, **MySQL**, and **Docker**, and now satisfies the main **Sprint 4 MVP requirements** including login, recommendations, messaging, points, Docker execution, and GitHub Actions CI/CD.
+**CampusCycle is a database-driven campus resource sharing platform designed for students to share, borrow, swap, gift, message, and discover useful academic and everyday items on campus. The application is built with **Express**, **Pug**, **MySQL**, and **Docker**, and now satisfies the main **Sprint 4 MVP requirements** including login, recommendations, messaging, points, Docker execution, and GitHub Actions CI/CD.**
 ---
 
 ## Project Overview
